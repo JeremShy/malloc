@@ -1,0 +1,9 @@
+*.o
+*.dSYM
+a.out
+*.a
+/lib
+/obj
+._*
+.DS_Store
+test_malloc
