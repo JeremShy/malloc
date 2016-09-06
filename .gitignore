@@ -7,3 +7,5 @@ a.out
 ._*
 .DS_Store
 test_malloc
+*.so
+*.swp

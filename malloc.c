@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/06 15:21:54 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/09/06 16:09:15 by jcamhi           ###   ########.fr       */
+/*   Created: 2016/09/06 15:31:57 by jcamhi            #+#    #+#             */
+/*   Updated: 2016/09/06 17:55:16 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <malloc.h>
+# include <malloc.h>
 
-int	main(int ac, char **av)
+void	*malloc(size_t size)
 {
-	(void)ac;
-	(void)av;
+	(void)size;
 
-	malloc(0);
-	return (0);
+	printf("%zu\n", sizeof(t_header));
+	return (NULL);
 }
