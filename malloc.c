@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   malloc.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/06 15:31:57 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/09/07 18:25:27 by jcamhi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <malloc.h>
 
 t_data	g_data = {.tiny[0] = NULL, .small[0] = NULL, .large[0] = NULL};
 
 void	*malloc(size_t size)
 {
-	// printf ("////////////APPEL A MALLOC//////////////\n");
+	printf ("////////////APPEL A MALLOC//////////////\n");
 	if (size <= TINY)
 		return (tiny(size, g_data.tiny));
 	else if (size <= SMALL)
