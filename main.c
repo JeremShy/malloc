@@ -6,9 +6,10 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 
-	char *str = ft_strdup("penis");
-	char *str2 = ft_strdup("penis2");
-	char *str3 = ft_strdup("peniaaaaaaaaaaaaas2");
-	printf("%s - %s- %s\n", str, str2, str3);
+	printf("size of t_header : %zu\n", sizeof(t_header));
+	// char *str = ft_strdup("penis");
+	char *pouet = malloc(0);
+	// printf("%s\n", str);
+	free(pouet);
 	return (0);
 }

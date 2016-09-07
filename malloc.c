@@ -2,6 +2,26 @@
 
 t_data	g_data = {.tiny[0] = NULL, .small[0] = NULL, .large[0] = NULL};
 
+void	free(void *ptr)
+{
+	t_header	*header;
+	int				index;
+
+	printf ("////////////APPEL A FREE//////////////\n");
+	printf("calling free with ptr = %p\n", ptr);
+	if ((header = find_header_tiny_or_small(ptr, g_data.tiny, g_data.small)))
+	{
+		printf("malloc found ! at emplacement : %p\n", header + sizeof(t_header));
+		header->used = 0;
+	}
+	else if ((index = find_header_large(ptr, g_data.large)))
+	{
+		printf("large malloc found.\n");
+	}
+	else
+		printf("malloc not found.\n");
+}
+
 void	*malloc(size_t size)
 {
 	printf ("////////////APPEL A MALLOC//////////////\n");
@@ -11,8 +31,5 @@ void	*malloc(size_t size)
 		return (small(size, g_data.small));
 	else
 		return (large(size, g_data.large));
-	// printf("Tiny : %d, t_header : %zu, 100 allocs : %zu\n", TINY, sizeof(t_header), 100 * (TINY + sizeof(t_header)));
-	// printf("small : %d, t_header : %zu, 100 allocs : %zu\n", SMALL, sizeof(t_header), 100 * (SMALL + sizeof(t_header)));
-	// printf("taille : %zu et %zu\n", get_t_psize(), get_s_psize());
 	return (NULL);
 }

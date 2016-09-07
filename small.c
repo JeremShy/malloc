@@ -12,7 +12,7 @@ void	*small(size_t size, void *small[])
 	header_creation = 1;
 	if (!(page = find_space(small, blocs_needed, get_s_psize())))
 	{
-		// printf("Creating a new small page..\n");
+		printf("Creating a new small page..\n");
 		page = create_new_page(small, blocs_needed);
 		if (!page)
 			return (NULL);
