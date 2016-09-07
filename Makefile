@@ -6,7 +6,7 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/06 15:15:02 by jcamhi            #+#    #+#              #
-#    Updated: 2016/09/07 18:31:22 by jcamhi           ###   ########.fr        #
+#    Updated: 2016/09/07 18:32:18 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
-NAME = libft_malloc_$HOSTTYPE.so
+NAME = libft_malloc_$(HOSTTYPE).so
 
 SYM_NAME = libft_malloc.so
 
