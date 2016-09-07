@@ -14,9 +14,14 @@ void	free(void *ptr)
 		printf("malloc found ! at emplacement : %p\n", header + sizeof(t_header));
 		header->used = 0;
 	}
-	else if ((index = find_header_large(ptr, g_data.large)))
+	else if ((index = find_header_large(ptr, g_data.large)) != -1)
 	{
 		printf("large malloc found.\n");
+		if (!unmap_and_shift_large_page(index, g_data.large))
+		{
+			printf("unmap failed.\n");
+			perror("");
+		}
 	}
 	else
 		printf("malloc not found.\n");

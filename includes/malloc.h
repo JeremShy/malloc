@@ -6,14 +6,14 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/09/08 00:30:44 by jcamhi           ###   ########.fr       */
+/*   Updated: 2016/09/08 00:46:19 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MALLOC_H
 # define MALLOC_H
 # define TINY 10
-# define SMALL 50
+# define SMALL 12
 # define P_MAX 100
 
 # include <sys/mman.h>
@@ -48,6 +48,8 @@ void					*tiny(size_t size, void *tiny[]);
 void					*large(size_t size, void *large[]);
 t_header			*find_header_tiny_or_small(void	*ptr, void *tiny[], void *small[]);
 int						find_header_large(void *ptr, void *large[]);
+int						unmap_and_shift_large_page(int index, void *large[]);
+
 
 
 #endif
