@@ -6,6 +6,6 @@ a.out
 /obj
 ._*
 .DS_Store
-test_malloc
+t_malloc
 *.so
 *.swp

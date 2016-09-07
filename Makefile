@@ -6,11 +6,16 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/06 15:15:02 by jcamhi            #+#    #+#              #
-#    Updated: 2016/09/06 16:01:57 by jcamhi           ###   ########.fr        #
+#    Updated: 2016/09/07 18:31:22 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = malloc.c
+SRC_NAME = malloc.c \
+						utils.c \
+						page.c \
+						tiny.c \
+						small.c \
+						large.c
 
 OBJ_PATH = ./obj/
 INC_PATH = ./includes
@@ -23,14 +28,14 @@ NAME = libft_malloc_$HOSTTYPE.so
 
 SYM_NAME = libft_malloc.so
 
-NAME_TEST = test_malloc
-NAME_TEST_OBJ = $(OBJ_PATH)test_malloc.o
+NAME_TEST = t_malloc
+NAME_TEST_OBJ = $(OBJ_PATH)t_malloc.o
 
 CC = gcc
 
 CFLAGS = -Werror -Wextra -Wall -g
 
-LFLAGS =
+LFLAGS = -lft
 
 LIB_DIR=./lib
 
@@ -45,7 +50,7 @@ all : $(NAME) $(SYM_NAME) $(NAME_TEST)
 $(NAME) : $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	make -C libsrcs/libft
-	$(CC) $(CFLAGS) $^ $(LFLAGS) -shared -o $@
+	$(CC) $(CFLAGS) $^ -L $(LIB_DIR) $(LFLAGS) -shared -o $@
 	rm -fv $(NAME_TEST_OBJ)
 
 $(SYM_NAME) :
@@ -74,9 +79,12 @@ $(NAME_TEST_OBJ): main.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME_TEST): $(NAME_TEST_OBJ)
-	$(CC) $(CFLAGS) $^ $(LFLAGS) $(SYM_NAME) -o $@
+	$(CC) $(CFLAGS) $^ $(LFLAGS) -L $(LIB_DIR) $(SYM_NAME) -o $@
 
 leaks: all
-	 valgrind --leak-check=full ./$(NAME)
+	 valgrind --leak-check=full ./$(NAME_TEST)
+
+leaks-le-pen: all
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_TEST)
 
 .PHONY : all clean fclean re
