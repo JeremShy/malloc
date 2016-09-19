@@ -9,6 +9,10 @@ int	main(int ac, char **av)
 	printf("size of t_header : %zu\n", sizeof(t_header));
 	char *str = ft_strdup("123456791345678");
 	printf("%s\n", str);
-	free(str);
+	printf("BEFORE\n");
+	show_alloc_mem();
+	// free(str);
+	printf("AFTER\n");
+	show_alloc_mem();
 	return (0);
 }
