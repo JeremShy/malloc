@@ -13,7 +13,7 @@ void	*tiny(size_t size, void *tiny[])
 	if (!(page = find_space(tiny, blocs_needed, get_t_psize())))
 	{
 		printf("Creating a new tiny page..\n");
-		page = create_new_page(tiny, blocs_needed);
+		page = create_new_page(tiny, get_t_psize());
 		if (!page)
 			return (NULL);
 		printf("tiny page created at emplacement : %p\n", page);

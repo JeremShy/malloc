@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/09/18 17:36:45 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/11/14 18:31:23 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ typedef struct	s_header {
 	int		used;
 	size_t	size;
 }				t_header;
-
-# define T_PSIZE ()
-# define S_PSIZE
 
 typedef struct	s_data {
 	void	*tiny[P_MAX + 1];

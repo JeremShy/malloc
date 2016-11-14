@@ -13,7 +13,7 @@ void	*small(size_t size, void *small[])
 	if (!(page = find_space(small, blocs_needed, get_s_psize())))
 	{
 		printf("Creating a new small page..\n");
-		page = create_new_page(small, blocs_needed);
+		page = create_new_page(small, get_s_psize());
 		if (!page)
 			return (NULL);
 		// printf("small page created at emplacement : %p\n", page);
