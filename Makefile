@@ -6,7 +6,7 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/06 15:15:02 by jcamhi            #+#    #+#              #
-#    Updated: 2016/09/18 17:21:26 by JeremShy         ###   ########.fr        #
+#    Updated: 2016/11/16 20:15:38 by JeremShy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC_NAME = malloc.c \
 						tiny.c \
 						small.c \
 						large.c \
-						show_alloc_mem.c
+						show_alloc_mem.c \
+						ft_put_addr.c
 
 OBJ_PATH = ./obj/
 INC_PATH = ./includes
