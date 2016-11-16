@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2016/11/16 20:23:53 by JeremShy         ###   ########.fr       */
+/*   Updated: 2016/11/16 22:21:04 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void					*large(size_t size, void *large[]);
 t_header			*find_header_tiny_or_small(void	*ptr, void *tiny[], void *small[]);
 int						find_header_large(void *ptr, void *large[]);
 int						unmap_and_shift_large_page(int index, void *large[]);
-void					do_show_alloc_mem(t_data g_data);
+void					do_show_alloc_mem(void *tiny[], void *small[], void *large[]);
 void 					show_alloc_mem();
 void 					ft_put_addr(void *addr);
 

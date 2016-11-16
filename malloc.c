@@ -41,5 +41,5 @@ void	*malloc(size_t size)
 
 void show_alloc_mem()
 {
-	do_show_alloc_mem(g_data);
+	do_show_alloc_mem(g_data.tiny, g_data.small, g_data.large);
 }
