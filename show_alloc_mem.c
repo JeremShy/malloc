@@ -3,31 +3,35 @@
 static unsigned long	print_page_content(void *page[], size_t page_max, char *str)
 {
 	int		tot;
-	t_header	*ptr;
+	void	*ptr;
 	size_t		end_of_page;
 	int		i;
 
 	i = 0;
 	tot = 0;
-	while (page[tot])
+	while (page[i])
 	{
 		ft_putstr(str);
-		ft_put_addr(page[tot]);
+		ft_put_addr(page[i]);
 		ft_putchar('\n');
-		ptr = (t_header*)page[tot];
+		ptr = (t_header*)page[i];
 		end_of_page = (size_t)ptr + page_max;
 		while ((size_t)ptr < end_of_page)
 		{
-			ft_put_addr(ptr + sizeof(t_header));
-			ft_putstr(" - ");
-			ft_put_addr(ptr + sizeof(t_header) + ptr->size);
-			ft_putstr(" : ");
-			ft_putnbr(ptr->size);
-			ft_putstr(" octets\n");
-			tot += ptr->size;
-			ptr = ptr + sizeof(t_header) + ptr->size;
+			if (((t_header*)ptr)->used == 1)
+			{
+				ft_put_addr(ptr + sizeof(t_header));
+				ft_putstr(" - ");
+				ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
+				ft_putstr(" : ");
+				ft_putnbr(((t_header*)ptr)->size);
+				ft_putstr(" octets\n");
+				tot += ((t_header*)(ptr))->size;
+			}
+			ptr = ptr + sizeof(t_header) + ((t_header*)ptr)->size;
+			printf("Next zone : %p\n", ptr);
 		}
-		tot++;
+		i++;
 	}
 	return (tot);
 }

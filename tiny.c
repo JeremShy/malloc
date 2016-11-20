@@ -29,6 +29,7 @@ void	*tiny(size_t size, void *tiny[])
 	}
 	((t_header*)page)->size = size;
 	((t_header*)page)->used = 1;
+	printf("size : %zu\n", ((t_header*)page)->size);
 	ret = page + sizeof(t_header);
 	if (header_creation)
 	{
