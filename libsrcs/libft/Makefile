@@ -6,7 +6,7 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 18:15:40 by jcamhi            #+#    #+#              #
-#    Updated: 2016/08/03 23:38:42 by JeremShy         ###   ########.fr        #
+#    Updated: 2016/11/20 14:02:03 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ SRC_NAME = ft_atoi.c \
 		   get_next_line.c \
 		   ft_strrevcmp.c \
 			 mallocp.c
-OBJ_PATH = ./
+OBJ_PATH = ./obj/
 
 INC_PATH = ./includes/
 
@@ -106,13 +106,18 @@ INC = $(addprefix -I,$(INC_PATH))
 
 all: $(NAME)
 
-$(NAME):
-	    $(CC) $(CFLAGS) $(INC) $(SRC)
-		ar r $(NAME) $(OBJ_NAME)
-		ranlib $(NAME)
+$(NAME): $(OBJ)
+	ar r $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
 
 clean:
-	/bin/rm -f $(OBJ_NAME)
+	/bin/rm -f $(OBJ)
+	/bin/rm -rf $(OBJ_PATH)
 
 fclean: clean
 	/bin/rm -f $(NAME)
