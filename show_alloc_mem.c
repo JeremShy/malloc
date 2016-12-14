@@ -29,7 +29,7 @@ static unsigned long	print_page_content(void *page[], size_t page_max, char *str
 				tot += ((t_header*)(ptr))->size;
 			}
 			ptr = ptr + sizeof(t_header) + ((t_header*)ptr)->size;
-			printf("Next zone : %p\n", ptr);
+			// printf("Next zone : %p\n", ptr);
 		}
 		i++;
 	}

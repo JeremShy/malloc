@@ -9,6 +9,7 @@ void	*tiny(size_t size, void *tiny[])
 	void	*ret;
 
 	blocs_needed = sizeof(t_header) + size;
+	printf("blocs needed : %d\n", blocs_needed);
 	header_creation = 1;
 	if (!(page = find_space(tiny, blocs_needed, get_t_psize())))
 	{
@@ -30,6 +31,7 @@ void	*tiny(size_t size, void *tiny[])
 	((t_header*)page)->size = size;
 	((t_header*)page)->used = 1;
 	printf("size : %zu\n", ((t_header*)page)->size);
+	printf("debut : %p, fin : %p\n", ((t_header*)page) + sizeof(t_header), ((t_header*)page) + sizeof(t_header) + size);
 	ret = page + sizeof(t_header);
 	if (header_creation)
 	{
