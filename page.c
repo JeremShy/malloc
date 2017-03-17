@@ -34,9 +34,13 @@ void	*find_space(void *page[], size_t blocs_needed, size_t max_size)
 		ptr = (t_header*)page[i];
 		while (mem < max_size)
 		{
-			if (ptr->used == 1 || (blocs_needed + sizeof(t_header) == ptr->size
-				|| blocs_needed + 2 * sizeof(t_header) <= ptr->size))
+			printf("boucle : ptr = %p\n", ptr);
+			// if (ptr->used == 1 || (blocs_needed + sizeof(t_header) == ptr->size
+			// 	|| blocs_needed + 2 * sizeof(t_header) <= ptr->size))
+			if ((ptr->used == 1) ||
+				(!(blocs_needed == ptr->size) && (blocs_needed + sizeof(t_header) > ptr->size)))
 			{
+				printf("on incremente ptr\n");
 				mem += ptr->size + sizeof(ptr);
 				ptr += ptr->size + sizeof(ptr);
 			}

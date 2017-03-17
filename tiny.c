@@ -4,12 +4,12 @@ void	*tiny(size_t size, void *tiny[])
 {
 	int		blocs_needed;
 	void	*page;
-	int		header_creation;
+	int		header_creation; // À 1 si il faut creer un header apres la nouvelle zone.
 	size_t	ancient_size;
 	void	*ret;
 
 	blocs_needed = sizeof(t_header) + size;
-	printf("blocs needed : %d\n", blocs_needed);
+	printf("blocs needed : %d - %#x\n", blocs_needed, blocs_needed);
 	header_creation = 1;
 	if (!(page = find_space(tiny, blocs_needed, get_t_psize())))
 	{
@@ -31,11 +31,13 @@ void	*tiny(size_t size, void *tiny[])
 	((t_header*)page)->size = size;
 	((t_header*)page)->used = 1;
 	printf("size : %zu\n", ((t_header*)page)->size);
-	printf("debut : %p, fin : %p\n", ((t_header*)page) + sizeof(t_header), ((t_header*)page) + sizeof(t_header) + size);
+	printf("page : %p\n", page);
+	printf("debut : %p, fin : %p\n", page + sizeof(t_header), page + sizeof(t_header) + size);
 	ret = page + sizeof(t_header);
 	if (header_creation)
 	{
-		page = ((t_header*)page)->size + page + sizeof(t_header);
+		printf("creating a new header after the new zone.\n");
+		page = page + sizeof(t_header) + ((t_header*)page)->size;
 		((t_header*)page)->size = ancient_size - sizeof(t_header) * 2 - size;
 		((t_header*)page)->used = 0;
 	}
