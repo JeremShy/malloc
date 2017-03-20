@@ -8,10 +8,10 @@ void	free(void *ptr)
 	int				index;
 
 	printf ("////////////APPEL A FREE//////////////\n");
-	// printf("calling free with ptr = %p\n", ptr);
+	printf("calling free with ptr = %p\n", ptr);
 	if ((header = find_header_tiny_or_small(ptr, g_data.tiny, g_data.small)))
 	{
-		// printf("malloc found ! at emplacement : %p\n", header + sizeof(t_header));
+		printf("malloc found ! at emplacement : %p\n", (void*)header + sizeof(t_header));
 		header->used = 0;
 	}
 	else if ((index = find_header_large(ptr, g_data.large)) != -1)
@@ -23,8 +23,8 @@ void	free(void *ptr)
 			// perror("");
 		}
 	}
-	// else
-	// 	printf("mallo/c not found.\n");
+	else
+		printf("malloc not found.\n");
 }
 
 void	*malloc(size_t size)

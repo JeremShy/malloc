@@ -65,12 +65,13 @@ static	t_header	*find_header_in_page(void	*ptr, void *page, size_t page_max)
 
 	header = page;
 	end_of_page = header + page_max;
-	printf("page + header = %p\n", page + sizeof(t_header));
-	printf("%p\n", ptr);
 	while (header < end_of_page)
 	{
 		if (header + sizeof(t_header) == ptr)
-			return (ptr);
+		{
+			printf("On retourne de find_header_in_page : %p\n", ptr);
+			return (header);
+		}
 		header = header + ((t_header*)(header))->size + sizeof(t_header);
 	}
 	return (NULL);
