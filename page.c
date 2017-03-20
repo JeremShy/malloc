@@ -17,6 +17,7 @@ void	*create_new_page(void *collec[], size_t size)
 		collec[i] = NULL;
 		return (NULL);
 	}
+	ft_bzero(collec[i], size);
 	collec[i + 1] = NULL;
 	return (collec[i]);
 }
@@ -38,11 +39,11 @@ void	*find_space(void *page[], size_t blocs_needed, size_t max_size)
 			// if (ptr->used == 1 || (blocs_needed + sizeof(t_header) == ptr->size
 			// 	|| blocs_needed + 2 * sizeof(t_header) <= ptr->size))
 			if ((ptr->used == 1) ||
-				(!(blocs_needed == ptr->size) && (blocs_needed + sizeof(t_header) > ptr->size)))
+				(!(blocs_needed - sizeof(t_header) == ptr->size) && (blocs_needed > ptr->size)))
 			{
-				printf("on incremente ptr\n");
-				mem += ptr->size + sizeof(ptr);
-				ptr += ptr->size + sizeof(ptr);
+				printf("on incremente ptr. ptr-size : %#lx\n", ptr->size);
+				mem += ptr->size + sizeof(t_header);
+				ptr += ptr->size + sizeof(t_header);
 			}
 			else
 				return (ptr);
