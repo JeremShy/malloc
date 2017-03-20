@@ -32,7 +32,7 @@ void	*tiny(size_t size, void *tiny[])
 	((t_header*)page)->used = 1;
 	printf("size : %zu\n", ((t_header*)page)->size);
 	printf("page : %p\n", page);
-	printf("debut : %p, fin : %p\n", page + sizeof(t_header), page + sizeof(t_header) + size);
+	printf("debut (apres header): %p, fin : %p\n", page + sizeof(t_header), page + sizeof(t_header) + size);
 	ret = page + sizeof(t_header);
 	if (header_creation)
 	{
@@ -40,6 +40,7 @@ void	*tiny(size_t size, void *tiny[])
 		page = page + sizeof(t_header) + ((t_header*)page)->size;
 		((t_header*)page)->size = ancient_size - sizeof(t_header) * 2 - size;
 		((t_header*)page)->used = 0;
+		printf("New header size : %#zx (%zu bytes)\n", ((t_header*)page)->size, ((t_header*)page)->size);
 	}
 	printf("returning %p\n", ret);
 	return (ret);

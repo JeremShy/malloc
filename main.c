@@ -12,7 +12,7 @@ int	main(int ac, char **av)
 	char *str2 = ft_strdup("123456789");
 	// printf("%s- %s\n", str, str2);
 	// printf("BEFORE\n");
-	// show_alloc_mem();
+	show_alloc_mem();
 	str = NULL;
 	str2 = NULL;
 	// free(str);

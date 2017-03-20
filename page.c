@@ -25,28 +25,33 @@ void	*create_new_page(void *collec[], size_t size)
 void	*find_space(void *page[], size_t blocs_needed, size_t max_size)
 {
 	int	i;
-	t_header *ptr;
+	void	*ptr;
 	size_t		mem;
+	size_t	size;
 
 	i = 0;
 	while (page[i])
 	{
 		mem = 0;
-		ptr = (t_header*)page[i];
+		ptr = page[i];
 		while (mem < max_size)
 		{
 			printf("boucle : ptr = %p\n", ptr);
 			// if (ptr->used == 1 || (blocs_needed + sizeof(t_header) == ptr->size
 			// 	|| blocs_needed + 2 * sizeof(t_header) <= ptr->size))
-			if ((ptr->used == 1) ||
-				(!(blocs_needed - sizeof(t_header) == ptr->size) && (blocs_needed > ptr->size)))
+			if ((((t_header*)ptr)->used == 1) ||
+				(!(blocs_needed - sizeof(t_header) == ((t_header*)ptr)->size) && (blocs_needed > ((t_header*)ptr)->size)))
 			{
-				printf("on incremente ptr. ptr-size : %#lx\n", ptr->size);
-				mem += ptr->size + sizeof(t_header);
-				ptr += ptr->size + sizeof(t_header);
+				size = ((t_header*)ptr)->size + sizeof(t_header);
+				printf("on incremente ptr. ptr : %p, ptr->size : %#lx. On ajoute : %#lx\n", ptr, ((t_header*)ptr)->size, size);
+				mem += size;
+				ptr += size;
 			}
 			else
+			{
+				printf("On retourne : %p\n", ptr);
 				return (ptr);
+			}
 		}
 		i++;
 	}
