@@ -6,14 +6,14 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/03/20 21:57:48 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/03/21 19:15:06 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MALLOC_H
 # define MALLOC_H
-# define TINY 50
-# define SMALL 80
+# define TINY 1
+# define SMALL 4
 # define P_MAX 100
 
 # include <sys/mman.h>
