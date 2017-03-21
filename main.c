@@ -7,6 +7,7 @@ int	main(int ac, char **av)
 	(void)av;
 
 	printf("!!!!!!!!!!!!!! size of t_header : %zu - %#lx !!!!!!!!!!\n", sizeof(t_header), sizeof(t_header));
+	printf("!!!!!!!!!!!!!! size of t_p_size : %#lx !!!!!!!!!!!!\n", get_t_psize());
 
 	printf("Allocating 2 * 28 bytes..\n");
 	char *str = ft_strdup("123456789123456789123456789");
