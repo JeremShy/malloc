@@ -12,8 +12,8 @@
 
 #ifndef MALLOC_H
 # define MALLOC_H
-# define TINY 1
-# define SMALL 4
+# define TINY 15
+# define SMALL 30
 # define P_MAX 100
 
 # include <sys/mman.h>
@@ -43,7 +43,7 @@ void					*find_space(void *page[], size_t blocs_needed, size_t max_size);
 void					*small(size_t size, void *small[]);
 void					*tiny(size_t size, void *tiny[]);
 void					*large(size_t size, void *large[]);
-t_header			*find_header_tiny_or_small(void	*ptr, void *tiny[], void *small[]);
+t_header				*find_header_tiny_or_small(void	*ptr, void *tiny[], void *small[], int *next_too);
 int						find_header_large(void *ptr, void *large[]);
 int						unmap_and_shift_large_page(int index, void *large[]);
 void					do_show_alloc_mem(void *tiny[], void *small[], void *large[]);
