@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/03/21 19:15:06 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/03/29 16:47:46 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void					*find_space(void *page[], size_t blocs_needed, size_t max_size);
 void					*small(size_t size, void *small[]);
 void					*tiny(size_t size, void *tiny[]);
 void					*large(size_t size, void *large[]);
-t_header				*find_header_tiny_or_small(void	*ptr, void *tiny[], void *small[], int *next_too);
+t_header				*find_header_tiny_or_small(void	*ptr, void *tiny[], void *small[], size_t *new_size);
 int						find_header_large(void *ptr, void *large[]);
 int						unmap_and_shift_large_page(int index, void *large[]);
 void					do_show_alloc_mem(void *tiny[], void *small[], void *large[]);

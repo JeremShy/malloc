@@ -6,17 +6,17 @@ void	free(void *ptr)
 {
 	t_header	*header;
 	int				index;
-	int 		next_too;
+	size_t 		new_size;
 
 	printf ("////////////APPEL A FREE//////////////\n");
 	printf("calling free with ptr = %p\n", ptr);
-	if ((header = find_header_tiny_or_small(ptr, g_data.tiny, g_data.small, &next_too)))
+	if ((header = find_header_tiny_or_small(ptr, g_data.tiny, g_data.small, &new_size)))
 	{
 		printf("malloc found ! at emplacement : %p\n", (void*)header + sizeof(t_header));
-		if (next_too)
+		if (new_size)
 		{
-			printf("Next too !\n");
-			header->size = header->size + sizeof(header) + ((t_header*)((void*)header + sizeof(t_header) + header->size))->size;
+			printf("There is a new size for the header, which is %zu. Header : %p\n", new_size, header);
+			header->size = new_size;
 		}
 		header->used = 0;
 	}
