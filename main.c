@@ -15,9 +15,9 @@ int	main(int ac, char **av)
 	// printf("%s- %s\n", str, str2);
 	// printf("BEFORE\n");
 	show_alloc_mem();
-	// free(str1);
-	// show_alloc_mem();
-  free(str2);
+	free(str1);
+	show_alloc_mem();
+  free(NULL);
 	printf("AFTER\n");
 	show_alloc_mem();
 	return (0);
