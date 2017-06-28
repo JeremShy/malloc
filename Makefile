@@ -6,7 +6,7 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/06 15:15:02 by jcamhi            #+#    #+#              #
-#    Updated: 2017/03/29 16:31:09 by JeremShy         ###   ########.fr        #
+#    Updated: 2017/06/28 21:38:44 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ fclean: clean
 re: fclean all
 
 $(NAME_TEST_OBJ): main.c
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) -Wno-unused-variable $(INC) -c $< -o $@
 
 $(NAME_TEST): $(NAME_TEST_OBJ)
 	$(CC) $(CFLAGS) $^ $(LFLAGS) -L $(LIB_DIR) $(SYM_NAME) -o $@

@@ -8,34 +8,38 @@ void	free(void *ptr)
 	int				index;
 	size_t 		new_size;
 
-	printf ("////////////APPEL A FREE//////////////\n");
-	printf("calling free with ptr = %p\n", ptr);
+	//printf ("////////////APPEL A FREE//////////////\n");
+	// //printf("calling free with ptr = %p\n", ptr);
+	new_size = 0;
 	if ((header = find_header_tiny_or_small(ptr, g_data.tiny, g_data.small, &new_size)))
 	{
-		printf("malloc found ! at emplacement : %p\n", (void*)header + sizeof(t_header));
+		//printf("malloc found ! at emplacement : %p\n", (void*)header + sizeof(t_header));
 		if (new_size)
 		{
-			printf("There is a new size for the header, which is %zu. Header : %p\n", new_size, header);
+			//printf("There is a new size for the header, which is %zu. Header : %p\n", new_size, header);
 			header->size = new_size;
 		}
 		header->used = 0;
 	}
 	else if ((index = find_header_large(ptr, g_data.large)) != -1)
 	{
-		// printf("large malloc found.\n");
+		// //printf("large malloc found.\n");
 		if (!unmap_and_shift_large_page(index, g_data.large))
 		{
-			// printf("unmap failed.\n");
+			// //printf("unmap failed.\n");
 			// perror("");
 		}
 	}
 	else
-		printf("malloc not found.\n");
+	{
+		//printf("malloc not found.\n");
+	}
 }
 
 void	*malloc(size_t size)
 {
-	printf ("////////////APPEL A MALLOC//////////////\n");
+	//printf ("////////////APPEL A MALLOC//////////////\n");
+	// write(1, "a\n", 2);
 	if (size <= TINY)
 		return (tiny(size, g_data.tiny));
 	else if (size <= SMALL)
