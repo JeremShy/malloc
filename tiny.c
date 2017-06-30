@@ -16,7 +16,10 @@ void	*tiny(size_t size, void *tiny[])
 		//printf("Creating a new tiny page..\n");
 		page = create_new_page(tiny, get_t_psize());
 		if (!page)
+		{
+			// //printf("There was an error while creating the page");
 			return (NULL);
+		}
 		//printf("tiny page created at emplacement : %p\n", page);
 		ancient_size = get_t_psize();
 	}
@@ -42,6 +45,6 @@ void	*tiny(size_t size, void *tiny[])
 		((t_header*)page)->used = 0;
 		//printf("New header size : %#zx (%zu bytes)\n", ((t_header*)page)->size, ((t_header*)page)->size);
 	}
-	//printf("returning %p\n", ret);
+	//printf("returning alloc tiny %p\n", ret);
 	return (ret);
 }
