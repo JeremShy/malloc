@@ -20,7 +20,7 @@ void	*small(size_t size, void *small[])
 			return (NULL);
 		}
 		// //printf("small page created at emplacement : %p\n", page);
-		ancient_size = get_s_psize();
+		ancient_size = get_s_psize() - sizeof(t_header);;
 	}
 	else
 	{

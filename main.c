@@ -13,40 +13,40 @@ int	main(int ac, char **av)
 	// //printf("Allocating 2 * 10 bytes..\n");
 	i = 0;
 	show_alloc_mem();
-	printf("------------------------------------------\n");
+	//printf("------------------------------------------\n");
 
-	str1 = ft_strdup("1234567");
+	str1 = malloc(1024);
 	show_alloc_mem();
 	printf("------------------------------------------\n");
 
-	char *str2 = ft_strdup("1234567");
-	show_alloc_mem();
-	printf("------------------------------------------\n");
+	// char *str2 = ft_strdup("1234567");
+	// show_alloc_mem();
+	// printf("------------------------------------------\n");
+	//
+	// char *str3 = ft_strdup("1234567");
+	// show_alloc_mem();
+	// printf("------------------------------------------\n");
+	//
+	// char *str4 = ft_strdup("1234567");
+	// show_alloc_mem();
+	// printf("//////////////////////////////////////////\n");
 
-	char *str3 = ft_strdup("1234567");
-	show_alloc_mem();
-	printf("------------------------------------------\n");
-
-	char *str4 = ft_strdup("1234567");
-	show_alloc_mem();
-	printf("//////////////////////////////////////////\n");
-
+	// free(str2);
+	// show_alloc_mem();
+	// printf("//////////////////////////////////////////\n");
+	//
 	free(str1);
 	show_alloc_mem();
 	printf("//////////////////////////////////////////\n");
 
-	free(str3);
-	show_alloc_mem();
-	printf("//////////////////////////////////////////\n");
+	// free(str3);
+	// show_alloc_mem();
+	//printf("//////////////////////////////////////////\n");
 
-	free(str2);
-	show_alloc_mem();
-	printf("//////////////////////////////////////////\n");
 
-	free(str4);
-	show_alloc_mem();
-	printf("//////////////////////////////////////////\n");
-
+	// free(str4);
+	// show_alloc_mem();
+	//printf("//////////////////////////////////////////\n");
 	// while (i < 10)
 	// {
 	// 	str1 = ft_strdup("1234567");
@@ -66,11 +66,11 @@ int	main(int ac, char **av)
 	//
 	//printf("Allocating 1 * 11 bytes..\n");
 	// char *str3 = ft_strdup("1234567890");
-	show_alloc_mem();
+	// show_alloc_mem();
 	//
 	str1  = NULL;
 	// str2 = NULL;
 	// str3 = NULL;
-	printf("!!!!!!!!!!!!!! size of t_header : %zu - %#lx !!!!!!!!!!\n", sizeof(t_header), sizeof(t_header));
+	//printf("!!!!!!!!!!!!!! size of t_header : %zu - %#lx !!!!!!!!!!\n", sizeof(t_header), sizeof(t_header));
 	return (0);
 }

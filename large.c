@@ -38,15 +38,15 @@ int	find_header_large(void *ptr, void *large[])
 	return (-1);
 }
 
-int	unmap_and_shift_large_page(int index, void *large[])
+int	unmap_and_shift_page(int index, void *page[])
 {
-	if (munmap(large[index], ((t_header*)(large[index]))->size) == -1)
+	if (munmap(page[index], ((t_header*)(page[index]))->size) == -1)
 		return (0);
-	while (large[index + 1])
+	while (page[index + 1])
 	{
-		large[index] = large[index + 1];
+		page[index] = page[index + 1];
 		index++;
 	}
-	large[index] = 0;
+	page[index] = 0;
 	return (1);
 }
