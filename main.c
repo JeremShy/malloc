@@ -18,17 +18,20 @@ int	main(int ac, char **av)
 	char *str4 = ft_strdup("1234567");
 	free(str1);
 	show_alloc_mem();
-	//printf("//////////////////////////////////////////\n");
+	printf("//////////////////////////////////////////\n");
 
 	free(str3);
 	show_alloc_mem();
-	//printf("//////////////////////////////////////////\n");
+	printf("//////////////////////////////////////////\n");
 
 	free(str2);
 	show_alloc_mem();
-	//printf("//////////////////////////////////////////\n");
+	printf("//////////////////////////////////////////\n");
 
-	// free(str4);
+	free(str4);
+	show_alloc_mem();
+	printf("//////////////////////////////////////////\n");
+
 	// while (i < 10)
 	// {
 	// 	str1 = ft_strdup("1234567");
@@ -37,22 +40,22 @@ int	main(int ac, char **av)
 	// 	// char *str2 = ft_strdup("123456789");
 	// 	i++;
 	// }
-	// //printf("BEFORE\n");
+	//printf("BEFORE\n");
 	// show_alloc_mem();
 	// free(str1);
 	// show_alloc_mem();
   // free(NULL);
-	// //printf("AFTER\n");
+	//printf("AFTER\n");
 	// show_alloc_mem();
 	// return (0);
 	//
-	// //printf("Allocating 1 * 11 bytes..\n");
+	//printf("Allocating 1 * 11 bytes..\n");
 	// char *str3 = ft_strdup("1234567890");
 	show_alloc_mem();
 	//
 	str1  = NULL;
 	// str2 = NULL;
 	// str3 = NULL;
-	//printf("!!!!!!!!!!!!!! size of t_header : %zu - %#lx !!!!!!!!!!\n", sizeof(t_header), sizeof(t_header));
+	printf("!!!!!!!!!!!!!! size of t_header : %zu - %#lx !!!!!!!!!!\n", sizeof(t_header), sizeof(t_header));
 	return (0);
 }

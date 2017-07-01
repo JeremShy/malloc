@@ -6,7 +6,7 @@ void	free(void *ptr)
 {
 	t_header	*header;
 	int				index;
-	size_t 		new_size;
+	int 		new_size;
 
 	//printf ("////////////APPEL A FREE//////////////\n");
 	if (!ptr)
