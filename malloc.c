@@ -42,7 +42,7 @@ void	free(void *ptr)
 void	*malloc(size_t size)
 {
 	//printf ("////////////APPEL A MALLOC//////////////\n");
-	write(1, "a\n", 2);
+	// write(1, "a\n", 2);
 	// //printf("size : %zu\n", size);
 	if (size <= TINY)
 	{

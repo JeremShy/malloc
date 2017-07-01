@@ -36,7 +36,7 @@ void	*small(size_t size, void *small[])
 	if (header_creation)
 	{
 		page = ((t_header*)page)->size + page + sizeof(t_header);
-		((t_header*)page)->size = ancient_size - sizeof(t_header) * 2 - size;
+		((t_header*)page)->size = ancient_size - sizeof(t_header) - size;
 		((t_header*)page)->used = 0;
 	}
 	//printf("returning alloc small %p\n", ret);
