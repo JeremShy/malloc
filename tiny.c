@@ -21,7 +21,8 @@ void	*tiny(size_t size, void *tiny[])
 			return (NULL);
 		}
 		//printf("tiny page created at emplacement : %p\n", page);
-		ancient_size = get_t_psize();
+		ancient_size = get_t_psize() - sizeof(t_header);
+		printf("ancient_size : %zu\n", ancient_size);
 	}
 	else
 	{

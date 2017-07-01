@@ -12,10 +12,25 @@ int	main(int ac, char **av)
 	//printf("!!!!!!!!!!!!!! size of t_p_size : %zu - %#lx !!!!!!!!!!!!\n", get_t_psize(), get_t_psize());
 	// //printf("Allocating 2 * 10 bytes..\n");
 	i = 0;
+	show_alloc_mem();
+	printf("------------------------------------------\n");
+
 	str1 = ft_strdup("1234567");
+	show_alloc_mem();
+	printf("------------------------------------------\n");
+
 	char *str2 = ft_strdup("1234567");
+	show_alloc_mem();
+	printf("------------------------------------------\n");
+
 	char *str3 = ft_strdup("1234567");
+	show_alloc_mem();
+	printf("------------------------------------------\n");
+
 	char *str4 = ft_strdup("1234567");
+	show_alloc_mem();
+	printf("//////////////////////////////////////////\n");
+
 	free(str1);
 	show_alloc_mem();
 	printf("//////////////////////////////////////////\n");
