@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/01 17:21:47 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/02 08:25:18 by JeremShy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct	s_data {
 
 void					*malloc(size_t size);
 void					free(void *ptr);
+void					*realloc(void *ptr, size_t size);
+void 					show_alloc_mem();
+
 size_t				get_t_psize(void);
 size_t				get_s_psize(void);
 void					*create_new_page(void *collec[], size_t size);
@@ -47,7 +50,7 @@ t_header				*find_header_tiny_or_small(void	*ptr, t_data *pages, int *new_size);
 int						find_header_large(void *ptr, void *large[]);
 int						unmap_and_shift_page(int index, void *page[]);
 void					do_show_alloc_mem(void *tiny[], void *small[], void *large[]);
-void 					show_alloc_mem();
+void					*do_realloc(void *ptr, size_t size, t_data *g_data);
 void 					ft_put_addr(void *addr);
 
 #endif

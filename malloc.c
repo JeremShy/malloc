@@ -62,6 +62,20 @@ void	*malloc(size_t size)
 	return (NULL);
 }
 
+void	*realloc(void *ptr, size_t size)
+{
+	if (size == 0 && ptr)
+	{
+		free(ptr);
+		return (malloc(0));
+	}
+	if (!ptr)
+	{
+		return (malloc(size));
+	}
+	return (do_realloc(ptr, size, &g_data));
+}
+
 void show_alloc_mem()
 {
 	do_show_alloc_mem(g_data.tiny, g_data.small, g_data.large);

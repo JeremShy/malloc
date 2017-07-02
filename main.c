@@ -12,11 +12,16 @@ int	main(int ac, char **av)
 	//printf("!!!!!!!!!!!!!! size of t_p_size : %zu - %#lx !!!!!!!!!!!!\n", get_t_psize(), get_t_psize());
 	// //printf("Allocating 2 * 10 bytes..\n");
 	i = 0;
-	show_alloc_mem();
+	// show_alloc_mem();
 	//printf("------------------------------------------\n");
-
-	str1 = malloc(1024);
-	show_alloc_mem();
+	while (i < 10)
+	{
+		str1 = malloc(0);
+		show_alloc_mem();
+		// free(str1);
+		// show_alloc_mem();
+		i++;
+	}
 	//printf("------------------------------------------\n");
 
 	// char *str2 = ft_strdup("1234567");
@@ -35,8 +40,8 @@ int	main(int ac, char **av)
 	// show_alloc_mem();
 	// //printf("//////////////////////////////////////////\n");
 	//
-	free(str1);
-	show_alloc_mem();
+	// free(str1);
+	// show_alloc_mem();
 	//printf("//////////////////////////////////////////\n");
 
 	// free(str3);
