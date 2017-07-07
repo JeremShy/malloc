@@ -100,9 +100,9 @@ int main()
   strcpy(addr1, "Bonjours\n");
   print(addr1);
 	show_alloc_mem();
-  addr3 = (char*)realloc(addr1, 128*M);
+  addr3 = (char*)realloc(addr1, 17*M);
 	show_alloc_mem();
-  addr3[127*M] = 42;
+  addr3[16*M] = 42;
   print(addr3);
   return (0);
 }
