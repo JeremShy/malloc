@@ -1,5 +1,5 @@
-// #include <malloc.h>
-// #include <libft.h>
+#include <malloc.h>
+#include <libft.h>
 //
 // int	main(int ac, char **av)
 // {
@@ -99,7 +99,9 @@ int main()
   addr1 = (char*)malloc(16*M);
   strcpy(addr1, "Bonjours\n");
   print(addr1);
+	show_alloc_mem();
   addr3 = (char*)realloc(addr1, 128*M);
+	show_alloc_mem();
   addr3[127*M] = 42;
   print(addr3);
   return (0);

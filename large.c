@@ -3,6 +3,7 @@
 void	*large(size_t size, void *large[])
 {
 	int	i;
+	int s_malloc;
 
 	i = 0;
 	//printf("creating a large page...\n");
@@ -10,7 +11,10 @@ void	*large(size_t size, void *large[])
 		i++;
 	if (i == P_MAX)
 		return (NULL);
-	large[i] = mmap(0, sizeof(t_header) + size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	s_malloc = (sizeof(t_header) + size) % getpagesize() == 0 ?
+		(sizeof(t_header) + size) : ((((sizeof(t_header) + size)
+		/ getpagesize()) + 1) * getpagesize());
+	large[i] = mmap(0, s_malloc, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (large[i] == MAP_FAILED)
 	{
 		large[i] = NULL;

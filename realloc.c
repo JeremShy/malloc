@@ -101,11 +101,12 @@ void	*do_realloc(void *ptr, size_t size, t_data *g_data)
 	}
 	else if ((possible_size = find_header_large(ptr, g_data->large)) != -1)
 	{
-		// write(1, "4\n", 2);
+		write(1, "4\n", 2);
 		header = (g_data->large)[possible_size];
 		old_size = ((t_header*)header)->size;
-		if (size + sizeof(t_header) < (unsigned int)old_size)
+		if (size + sizeof(t_header) < (size_t)old_size)
 		{
+			write(1, "5\n", 2);
 			((t_header*)header)->size = size;
 			next_header = header + sizeof(t_header) + ((t_header*)header)->size;
 			((t_header*)next_header)->used = 0;
@@ -113,6 +114,7 @@ void	*do_realloc(void *ptr, size_t size, t_data *g_data)
 		}
 		else
 		{
+			write(1, "6\n", 2);
 			ptr_2 = malloc(size);
 			if (!ptr_2)
 				return (NULL);
