@@ -1,5 +1,4 @@
 *.o
-*.dSYM
 a.out
 *.a
 /lib
