@@ -1,8 +1,0 @@
-Total : 0 octets
-TINY : 0x10a20a000
-0x10a20a010 - 0x10a20a018 : 8 octets
-0x10a20a028 - 0x10a217000 : 53208 octets. (Not allocated)
-Total : 53216 octets
-TINY : 0x10a20a000
-0x10a20a010 - 0x10a217000 : 53232 octets. (Not allocated)
-Total : 53232 octets
