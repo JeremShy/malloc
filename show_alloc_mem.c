@@ -18,26 +18,16 @@ static unsigned long	print_page_content(void *page[], size_t page_max, char *str
 		end_of_page = (size_t)ptr + page_max;
 		while ((size_t)ptr < end_of_page)
 		{
+			ft_put_addr(ptr + sizeof(t_header));
+			ft_putstr(" - ");
+			ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
+			ft_putstr(" : ");
+			ft_putnbr(((t_header*)ptr)->size);
 			if (((t_header*)ptr)->used == 1)
-			{
-				ft_put_addr(ptr + sizeof(t_header));
-				ft_putstr(" - ");
-				ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
-				ft_putstr(" : ");
-				ft_putnbr(((t_header*)ptr)->size);
 				ft_putstr(" octets\n");
-				tot += ((t_header*)(ptr))->size;
-			}
 			else
-			{
-				ft_put_addr(ptr + sizeof(t_header));
-				ft_putstr(" - ");
-				ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
-				ft_putstr(" : ");
-				ft_putnbr(((t_header*)ptr)->size);
 				ft_putstr(" octets. (Not allocated)\n");
-				tot += ((t_header*)(ptr))->size;
-			}
+			tot += ((t_header*)(ptr))->size;
 			ptr = ptr + sizeof(t_header) + ((t_header*)ptr)->size;
 			// //printf("Next zone : %p\n", ptr);
 		}
