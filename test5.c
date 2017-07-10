@@ -2,7 +2,7 @@
 
 int main()
 {
-	// malloc(24);
+	malloc(24);
   malloc(1024);
   malloc(1024 * 32);
   malloc(1024 * 1024);
