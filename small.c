@@ -1,6 +1,28 @@
 #include <malloc.h>
 
-void	*small(size_t size, void *small[])
+static void	*create_page_sm(size_t *ancient_size, void *small[])
+{
+	void	*page;
+
+	page = create_new_page(small, get_s_psize());
+	if (!page)
+		return (NULL);
+	*ancient_size = get_s_psize() - sizeof(t_header);
+	return (page);
+}
+
+static void	create_header(void *page, size_t ancient_size, size_t size,
+	int header_creation)
+{
+	if (header_creation)
+	{
+		page = ((t_header*)page)->size + page + sizeof(t_header);
+		((t_header*)page)->size = ancient_size - sizeof(t_header) - size;
+		((t_header*)page)->used = 0;
+	}
+}
+
+void		*small(size_t size, void *small[])
 {
 	int		blocs_needed;
 	void	*page;
@@ -12,33 +34,18 @@ void	*small(size_t size, void *small[])
 	header_creation = 1;
 	if (!(page = find_space(small, blocs_needed, get_s_psize())))
 	{
-		//printf("Creating a new small page..\n");
-		page = create_new_page(small, get_s_psize());
-		if (!page)
-		{
-			//printf("error\n");
+		if (!(page = create_page_sm(&ancient_size, small)))
 			return (NULL);
-		}
-		// //printf("small page created at emplacement : %p\n", page);
-		ancient_size = get_s_psize() - sizeof(t_header);;
 	}
 	else
 	{
-		// //printf("small zone found at emplacement : %p\n", page);
 		if (((t_header*)page)->size == blocs_needed + sizeof(t_header))
 			header_creation = 0;
-		else
-			ancient_size = ((t_header*)page)->size;
+		ancient_size = header_creation ? ((t_header*)page)->size : 0;
 	}
 	((t_header*)page)->size = size;
 	((t_header*)page)->used = 1;
 	ret = page + sizeof(t_header);
-	if (header_creation)
-	{
-		page = ((t_header*)page)->size + page + sizeof(t_header);
-		((t_header*)page)->size = ancient_size - sizeof(t_header) - size;
-		((t_header*)page)->used = 0;
-	}
-	//printf("returning alloc small %p\n", ret);
+	create_header(page, ancient_size, size, header_creation);
 	return (ret);
 }

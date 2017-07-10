@@ -5,8 +5,8 @@ t_data g_data = {.tiny[0] = NULL, .small[0] = NULL, .large[0] = NULL};
 void	free(void *ptr)
 {
 	t_header	*header;
-	int				index;
-	int 		new_size;
+	int			index;
+	int			new_size;
 
 	if (!ptr)
 		return ;
@@ -14,9 +14,7 @@ void	free(void *ptr)
 	if ((header = find_header_tiny_or_small(ptr, &g_data, &new_size)))
 	{
 		if (new_size == -1)
-		{
-			return;
-		}
+			return ;
 		else if (new_size)
 			header->size = new_size;
 		header->used = 0;
@@ -52,7 +50,7 @@ void	*realloc(void *ptr, size_t size)
 	return (do_realloc(ptr, size, &g_data));
 }
 
-void show_alloc_mem()
+void	show_alloc_mem(void)
 {
 	do_show_alloc_mem(g_data.tiny, g_data.small, g_data.large);
 }
