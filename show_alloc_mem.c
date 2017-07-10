@@ -28,7 +28,7 @@ static unsigned long	print_page_content(void *page[], size_t page_max, char *str
 			else
 				ft_putstr(" octets. (Not allocated)\n");
 			tot += ((t_header*)(ptr))->size;
-			ptr = ptr + sizeof(t_header) + ((t_header*)ptr)->size;
+			ptr = ptr + sizeof(t_header) + (size_t)(((t_header*)ptr)->size);
 			// //printf("Next zone : %p\n", ptr);
 		}
 		i++;

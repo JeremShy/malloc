@@ -9,7 +9,8 @@ void	free(void *ptr)
 	int 		new_size;
 
 	//printf ("////////////APPEL A FREE//////////////\n");
-	if (!ptr)
+	// show_alloc_mem();
+	// if (!ptr)
 		return ;
 	// //printf("calling free with ptr = %p\n", ptr);
 	new_size = 0;
@@ -41,7 +42,8 @@ void	free(void *ptr)
 
 void	*malloc(size_t size)
 {
-	//printf ("////////////APPEL A MALLOC//////////////\n");
+	// show_alloc_mem();
+	// write (1, "////////////APPEL A MALLOC//////////////\n", sizeof("////////////APPEL A MALLOC//////////////\n"));
 	// write(1, "a\n", 2);
 	// //printf("size : %zu\n", size);
 	if (size <= TINY)
