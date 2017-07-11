@@ -43,8 +43,8 @@
 
  	str1[49] = '\0';
  	str1 = realloc(str1, 60);
+	show_alloc_mem();
 	str1[59] = '\0';
- 	show_alloc_mem();
 
 	str2 = realloc(str2, 6);
 	str2[5] = '\0';

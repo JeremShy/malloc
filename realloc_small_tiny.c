@@ -3,7 +3,7 @@
 static void	*divide_next_header(void *header, size_t size, size_t possible_size)
 {
 	void	*next_header;
-	size_t		old_size;
+	size_t	old_size;
 
 	old_size = ((t_header*)header)->size;
 	((t_header*)header)->size = size;
@@ -27,7 +27,7 @@ static void	*create_new_and_free_old(size_t size, void *ptr)
 
 static void	*shorten_allocation(void *header, size_t size, void *ptr)
 {
-	size_t		old_size;
+	size_t	old_size;
 	void	*next_header;
 
 	old_size = ((t_header*)header)->size;
@@ -38,12 +38,13 @@ static void	*shorten_allocation(void *header, size_t size, void *ptr)
 	return (ptr);
 }
 
-void	*realloc_small_tiny(void *ptr, size_t size, size_t possible_size,
+void		*realloc_small_tiny(void *ptr, size_t size, size_t possible_size,
 	void *header)
 {
 	if (possible_size != 0)
 	{
-		if (size == possible_size + ((t_header*)header)->size + sizeof(t_header))
+		if (size == possible_size + ((t_header*)header)->size +
+			sizeof(t_header))
 		{
 			((t_header*)header)->size = size;
 			return (header + sizeof(t_header));
