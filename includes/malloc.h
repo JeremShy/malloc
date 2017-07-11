@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/11 20:16:37 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/11 20:54:48 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void					do_show_alloc_mem(void *tiny[], void *small[], void *large[]);
 void					*do_realloc(void *ptr, size_t size, t_data *g_data);
 void 					ft_put_addr(void *addr);
 void					*find_header_for_realloc(void *ptr, void *tiny[], void *small[], size_t *possible_size);
+void					*realloc_small_tiny(void *ptr, size_t size, size_t possible_size, void *header);
 
 #endif
