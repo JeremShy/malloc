@@ -13,7 +13,8 @@ void	*large(size_t size, void *large[])
 	s_malloc = (sizeof(t_header) + size) % getpagesize() == 0 ?
 		(sizeof(t_header) + size) : ((((sizeof(t_header) + size)
 		/ getpagesize()) + 1) * getpagesize());
-	large[i] = mmap(0, s_malloc, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	large[i] = mmap(0, s_malloc, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE,
+		-1, 0);
 	if (large[i] == MAP_FAILED)
 	{
 		large[i] = NULL;
@@ -25,7 +26,7 @@ void	*large(size_t size, void *large[])
 	return (large[i] + sizeof(t_header));
 }
 
-int	find_header_large(void *ptr, void *large[])
+int		find_header_large(void *ptr, void *large[])
 {
 	int	i;
 
@@ -39,7 +40,7 @@ int	find_header_large(void *ptr, void *large[])
 	return (-1);
 }
 
-int	unmap_and_shift_page(int index, void *page[])
+int		unmap_and_shift_page(int index, void *page[])
 {
 	if (munmap(page[index], ((t_header*)(page[index]))->size) == -1)
 		return (0);

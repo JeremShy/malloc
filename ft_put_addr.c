@@ -13,7 +13,7 @@ static int	compte(unsigned long nbr, int base)
 	return (ret);
 }
 
-char	get_char_for_tab(int *i)
+char		get_char_for_tab(int *i)
 {
 	(*i)++;
 	if (((*i) - 1) < 10)
@@ -24,13 +24,13 @@ char	get_char_for_tab(int *i)
 		return ('\0');
 }
 
-void ft_put_addr(void *addr)
+void		ft_put_addr(void *addr)
 {
-	char					tab[17];
-	int						i;
+	char			tab[17];
+	int				i;
 	unsigned long	nbr;
-	char					tabl[40];
-	int						nb;
+	char			tabl[40];
+	int				nb;
 
 	i = 0;
 	nbr = (unsigned long)addr;
