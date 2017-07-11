@@ -1,10 +1,30 @@
 #include <malloc.h>
 
-static unsigned long	print_page_content(void *page[], size_t page_max, char *str)
+static void				*print_area(void *ptr, int *tot)
+{
+	if (((t_header*)ptr)->used == 1)
+	{
+		ft_put_addr(ptr + sizeof(t_header));
+		ft_putstr(" - ");
+		ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
+		ft_putstr(" : ");
+		ft_putnbr(((t_header*)ptr)->size);
+		if (((t_header*)ptr)->used == 1)
+			ft_putstr(" octets\n");
+		else
+			ft_putstr(" octets. (Not allocated)\n");
+		*tot += ((t_header*)(ptr))->size;
+	}
+	ptr = ptr + sizeof(t_header) + (size_t)(((t_header*)ptr)->size);
+	return (ptr);
+}
+
+static unsigned long	print_page_content(void *page[], size_t page_max,
+		char *str)
 {
 	int				tot;
 	void			*ptr;
-	size_t		end_of_page;
+	size_t			end_of_page;
 	int				i;
 
 	i = 0;
@@ -17,20 +37,7 @@ static unsigned long	print_page_content(void *page[], size_t page_max, char *str
 		ptr = (t_header*)page[i];
 		end_of_page = (size_t)ptr + page_max;
 		while ((size_t)ptr < end_of_page)
-		{
-			ft_put_addr(ptr + sizeof(t_header));
-			ft_putstr(" - ");
-			ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
-			ft_putstr(" : ");
-			ft_putnbr(((t_header*)ptr)->size);
-			if (((t_header*)ptr)->used == 1)
-				ft_putstr(" octets\n");
-			else
-				ft_putstr(" octets. (Not allocated)\n");
-			tot += ((t_header*)(ptr))->size;
-			ptr = ptr + sizeof(t_header) + (size_t)(((t_header*)ptr)->size);
-			// //printf("Next zone : %p\n", ptr);
-		}
+			ptr = print_area(ptr, &tot);
 		i++;
 	}
 	return (tot);
@@ -38,9 +45,9 @@ static unsigned long	print_page_content(void *page[], size_t page_max, char *str
 
 static unsigned long	print_large_pages(void *page[])
 {
-	int	tot;
-	void			*ptr;
-	int	i;
+	int		tot;
+	void	*ptr;
+	int		i;
 
 	i = 0;
 	tot = 0;
@@ -65,7 +72,8 @@ static unsigned long	print_large_pages(void *page[])
 	return (tot);
 }
 
-void	do_show_alloc_mem(void *tiny[], void *small[], void *large[])
+void					do_show_alloc_mem(void *tiny[],
+		void *small[], void *large[])
 {
 	int	tot;
 

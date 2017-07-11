@@ -32,7 +32,7 @@
 	show_alloc_mem();
 	free(str1);
 	show_alloc_mem();
-	free(str1);
+	free(str3);
  	show_alloc_mem();
 	return (0);
 
