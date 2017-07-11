@@ -1,6 +1,7 @@
 #include <malloc.h>
 
-static void *find_header_in_page(void *ptr, void *page, size_t p_size, size_t *possible_size)
+static void	*find_header_in_page(void *ptr, void *page, size_t p_size,
+		size_t *possible_size)
 {
 	void	*header;
 	void	*eop;
@@ -28,23 +29,26 @@ static void *find_header_in_page(void *ptr, void *page, size_t p_size, size_t *p
 	return (NULL);
 }
 
-void	*find_header_for_realloc(void *ptr, void *tiny[], void *small[], size_t *possible_size)
+void		*find_header_for_realloc(void *ptr, void *tiny[], void *small[],
+		size_t *possible_size)
 {
-	void *ret;
+	void	*ret;
 	int		i;
 
 	i = 0;
 	*possible_size = 0;
 	while (tiny[i])
 	{
-		if ((ret = find_header_in_page(ptr, tiny[i], get_t_psize(), possible_size)))
+		if ((ret = find_header_in_page(ptr, tiny[i], get_t_psize(),
+						possible_size)))
 			return (ret);
 		i++;
 	}
 	i = 0;
 	while (small[i])
 	{
-		if ((ret = find_header_in_page(ptr, small[i], get_s_psize(), possible_size)))
+		if ((ret = find_header_in_page(ptr, small[i], get_s_psize(),
+						possible_size)))
 			return (ret);
 		i++;
 	}
