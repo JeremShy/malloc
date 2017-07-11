@@ -6,7 +6,7 @@
 /*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:19:40 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/10 18:13:34 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/11 20:16:37 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int						unmap_and_shift_page(int index, void *page[]);
 void					do_show_alloc_mem(void *tiny[], void *small[], void *large[]);
 void					*do_realloc(void *ptr, size_t size, t_data *g_data);
 void 					ft_put_addr(void *addr);
+void					*find_header_for_realloc(void *ptr, void *tiny[], void *small[], size_t *possible_size);
 
 #endif

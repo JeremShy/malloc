@@ -34,19 +34,31 @@
 	show_alloc_mem();
 	free(str3);
  	show_alloc_mem();
-	return (0);
+
+	str1 = malloc(50);
+ 	str2 = malloc(16);
+ 	str3 = malloc(40);
+
+	show_alloc_mem();
 
  	str1[49] = '\0';
- // 	str1 = realloc(str1, 6);
+ 	str1 = realloc(str1, 60);
+	str1[59] = '\0';
  	show_alloc_mem();
 
- 	str1[59] = '\0';
- 	free(str1);
+	str2 = realloc(str2, 6);
+	str2[5] = '\0';
  	show_alloc_mem();
 
- 	free(str3);
+	str3 = realloc(str3, 10);
  	show_alloc_mem();
 
+	free(str1);
+	show_alloc_mem();
+	free(str2);
+	show_alloc_mem();
+	free(str3);
+	show_alloc_mem();
 	//printf("------------------------------------------\n");
 
 	// char *str2 = ft_strdup("1234567");

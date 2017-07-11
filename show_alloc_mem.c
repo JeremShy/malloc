@@ -2,8 +2,8 @@
 
 static void				*print_area(void *ptr, int *tot)
 {
-	if (((t_header*)ptr)->used == 1)
-	{
+	// if (((t_header*)ptr)->used == 1)
+	// {
 		ft_put_addr(ptr + sizeof(t_header));
 		ft_putstr(" - ");
 		ft_put_addr(ptr + sizeof(t_header) + ((t_header*)ptr)->size);
@@ -14,8 +14,8 @@ static void				*print_area(void *ptr, int *tot)
 		else
 			ft_putstr(" octets. (Not allocated)\n");
 		*tot += ((t_header*)(ptr))->size;
-	}
-	ptr = ptr + sizeof(t_header) + (size_t)(((t_header*)ptr)->size);
+	// }
+	ptr = (char*)ptr + sizeof(t_header) + (size_t)(((t_header*)ptr)->size);
 	return (ptr);
 }
 
