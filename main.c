@@ -28,11 +28,11 @@
  	str2 = malloc(16);
  	str3 = malloc(40);
 	show_alloc_mem();
- 	free(str3);
+ 	free(str1);
 	show_alloc_mem();
-	free(str3);
+	free(str1);
 	show_alloc_mem();
-	// free(NULL);
+	free(NULL);
  	show_alloc_mem();
 	return (0);
 
