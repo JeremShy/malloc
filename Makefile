@@ -6,7 +6,7 @@
 #    By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/06 15:15:02 by jcamhi            #+#    #+#              #
-#    Updated: 2017/07/11 21:16:11 by jcamhi           ###   ########.fr        #
+#    Updated: 2017/07/11 21:21:52 by jcamhi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
 
-all : $(NAME) $(SYM_NAME) $(NAME_TEST)
+all : $(NAME) $(SYM_NAME)
 
 $(NAME) : $(OBJ)
 	@mkdir -p $(LIB_DIR)
