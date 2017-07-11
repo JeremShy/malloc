@@ -13,7 +13,7 @@ static int	compte(unsigned long nbr, int base)
 	return (ret);
 }
 
-char	get_char_for_tab(int *i) // Mais si c'est clair..
+char	get_char_for_tab(int *i)
 {
 	(*i)++;
 	if (((*i) - 1) < 10)
@@ -24,8 +24,8 @@ char	get_char_for_tab(int *i) // Mais si c'est clair..
 		return ('\0');
 }
 
-void ft_put_addr(void *addr) // Fonction sensée afficher une addresse sans avoir besoin de malloc(3). Simplement, elle affiche l'adresse
-{                            // A l'envers, ce qui est assez génant.
+void ft_put_addr(void *addr)
+{
 	char					tab[17];
 	int						i;
 	unsigned long	nbr;
@@ -48,26 +48,3 @@ void ft_put_addr(void *addr) // Fonction sensée afficher une addresse sans avoi
 	tabl[nb] = '\0';
 	ft_putstr(tabl);
 }
-
-// char		*ft_itoa_base(unsigned int nbr, int base)
-// {
-// 	char		*retour;
-// 	int			nb;
-// 	int			i;
-// 	char		tab[17];
-//
-// 	if (nbr == 0)
-// 		return (ft_alloc_str("0"));
-// 	ft_strcpy(tab, "0123456789abcdef");
-// 	nb = compte(nbr, base);
-// 	retour = mallocp(nb + 1);
-// 	i = 1;
-// 	while (nbr != 0)
-// 	{
-// 		retour[nb - i] = tab[nbr % base];
-// 		nbr /= base;
-// 		i++;
-// 	}
-// 	retour[nb] = '\0';
-// 	return (retour);
-// }

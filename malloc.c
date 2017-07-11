@@ -44,9 +44,7 @@ void	*realloc(void *ptr, size_t size)
 		return (malloc(0));
 	}
 	if (!ptr)
-	{
 		return (malloc(size));
-	}
 	return (do_realloc(ptr, size, &g_data));
 }
 

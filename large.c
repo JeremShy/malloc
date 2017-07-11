@@ -6,7 +6,6 @@ void	*large(size_t size, void *large[])
 	int s_malloc;
 
 	i = 0;
-	//printf("creating a large page...\n");
 	while (large[i])
 		i++;
 	if (i == P_MAX)
@@ -18,10 +17,8 @@ void	*large(size_t size, void *large[])
 	if (large[i] == MAP_FAILED)
 	{
 		large[i] = NULL;
-		// //printf("large page creation failed.\n");
 		return (NULL);
 	}
-	//printf("large page created at emplacement : %p\n", large[i]);
 	((t_header*)(large[i]))->size = size;
 	((t_header*)(large[i]))->used = 1;
 	large[i + 1] = NULL;
