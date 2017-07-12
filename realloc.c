@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   realloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 21:17:34 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/11 21:17:35 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/12 14:33:06 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void		*realloc_large(void *header, size_t possible_size, t_data *g_data,
 		if (!ptr_2)
 			return (NULL);
 		ft_memcpy(ptr_2, ptr, size);
-		show_alloc_mem();
 		unmap_and_shift_page(possible_size, g_data->large);
 		return (ptr_2);
 	}

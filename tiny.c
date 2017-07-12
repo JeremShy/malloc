@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tiny.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 21:17:44 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/11 21:17:45 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/12 15:18:02 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	*create_page_ti(size_t *ancient_size, void *tiny[])
 static void	create_header(void *page, size_t ancient_size, size_t size,
 	int header_creation)
 {
-	if (header_creation)
+	if (header_creation && ancient_size != size)
 	{
 		page = ((t_header*)page)->size + page + sizeof(t_header);
 		((t_header*)page)->size = ancient_size - sizeof(t_header) - size;
@@ -51,7 +51,7 @@ void		*tiny(size_t size, void *tiny[])
 	}
 	else
 	{
-		if (((t_header*)page)->size == blocs_needed + sizeof(t_header))
+		if (((t_header*)page)->size == size + sizeof(t_header))
 			header_creation = 0;
 		ancient_size = header_creation ? ((t_header*)page)->size : 0;
 	}

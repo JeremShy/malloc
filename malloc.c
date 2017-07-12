@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 21:17:31 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/11 21:17:32 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/12 14:42:09 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	free(void *ptr)
 		header->used = 0;
 	}
 	else if ((index = find_header_large(ptr, g_data.large)) != -1)
-	{
 		unmap_and_shift_page(index, g_data.large);
-	}
 }
 
 void	*malloc(size_t size)

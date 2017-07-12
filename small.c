@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 21:17:43 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/11 21:17:44 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/12 15:18:58 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	*create_page_sm(size_t *ancient_size, void *small[])
 static void	create_header(void *page, size_t ancient_size, size_t size,
 	int header_creation)
 {
-	if (header_creation)
+	if (header_creation && ancient_size != size)
 	{
 		page = ((t_header*)page)->size + page + sizeof(t_header);
 		((t_header*)page)->size = ancient_size - sizeof(t_header) - size;

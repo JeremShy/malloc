@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcamhi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcamhi <jcamhi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 21:16:55 by jcamhi            #+#    #+#             */
-/*   Updated: 2017/07/11 21:16:55 by jcamhi           ###   ########.fr       */
+/*   Updated: 2017/07/12 15:17:46 by jcamhi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ static	t_header	*find_header_for_free(void *ptr, void *page,
 		return (first_if(header, new_size));
 	while (header < eop)
 	{
-		next_header = header + sizeof(t_header) + ((t_header*)header)->size;
+		next_header = (char*)header + sizeof(t_header)
+			+ (size_t)(((t_header*)header)->size);
 		if (next_header >= eop)
 			return (NULL);
 		if (next_header + sizeof(t_header) == ptr &&
